@@ -38,8 +38,14 @@ if (isDev) {
     host: "0.0.0.0",
     port: 3000,
     publicPath: "/public/",
-    contentBase: path.resolve(__dirname, "../dist"),
-    historyApiFallback: true
+    overlay: {
+      errors: true
+    },
+    // contentBase: path.resolve(__dirname, "../dist"),
+    hot: true,
+    historyApiFallback: {
+      index: "/public/index.html"
+    }
   };
 
   Array.prototype.push.apply(config.module.rules, [
@@ -123,7 +129,7 @@ if (isDev) {
     },
     minimizer: [
       new TerserWebpackPlugin({ sourceMap: true }),
-      new HtmlWebapckPlugin({
+      new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "../client/template.html"),
         minify: {
           collapseWhitespace: true,
@@ -134,7 +140,5 @@ if (isDev) {
     ]
   };
 }
-
-// console.log(config);
 
 module.exports = config;
