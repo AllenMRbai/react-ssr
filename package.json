@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build:client": "cross-env NODE_ENV=production webpack --config ./build/webpack.client.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config ./build/webpack.server.js",
     "start:client": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.client.js",
-    "start:server": "cross-env NODE_ENV=development nodemon ./server/index.js"
+    "start:server": "cross-env NODE_ENV=development nodemon ./server/index.js",
+    "build": "npm run build:client && npm run build:server"
   },
   "keywords": [],
   "author": "",
@@ -36,9 +38,12 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "http-proxy-middleware": "^0.19.1",
+    "memory-fs": "^0.4.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-hot-loader": "^4.8.0",

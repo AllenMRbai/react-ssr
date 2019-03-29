@@ -1,2 +1,34 @@
+const path = require("path");
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const merge = require("webpack-merge");
+const common = require("./webpack.common");
+
+const isDev = process.env.NODE_ENV === "development";
+
+const config = merge(common, {
+  target: "node",
+  entry: {
+    app: path.resolve(__dirname, "../client/server-entry.jsx")
+  },
+  output: {
+    filename: "server-entry.js",
+    path: path.resolve(__dirname, "../dist/"),
+    publicPath: "/public/",
+    libraryTarget: "commonjs2"
+  },
+  module: {
+    rules: []
+  },
+  plugins: []
+});
+
+if (isDev) {
+  /***** 开发(development) *****/
+  config.mode = "development";
+} else {
+  /***** 生产(production) *****/
+  config.mode = "production";
+}
+
+module.exports = config;

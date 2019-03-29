@@ -3,10 +3,15 @@ import { hot } from "react-hot-loader/root";
 
 @hot
 class App extends Component {
+  sayHello = () => {
+    console.log("hello world");
+  };
   render() {
     return (
       <div>
-        <h1>12311145454</h1>
+        <h1>123111454</h1>
+        <input type="text" />
+        <button onClick={this.sayHello}>点击说你好</button>
       </div>
     );
   }

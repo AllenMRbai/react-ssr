@@ -41,7 +41,6 @@ if (isDev) {
     overlay: {
       errors: true
     },
-    // contentBase: path.resolve(__dirname, "../dist"),
     hot: true,
     historyApiFallback: {
       index: "/public/index.html"
@@ -132,8 +131,7 @@ if (isDev) {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "../client/template.html"),
         minify: {
-          collapseWhitespace: true,
-          removeComments: true
+          collapseWhitespace: true
         }
       }),
       new OptimizeCssAssetsWebpackPlugin()
