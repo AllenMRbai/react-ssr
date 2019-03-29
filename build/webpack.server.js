@@ -1,21 +1,20 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
 
-const merge = require("webpack-merge");
-const common = require("./webpack.common");
+const merge = require('webpack-merge');
+const common = require('./webpack.common');
 
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.NODE_ENV === 'development';
 
 const config = merge(common, {
-  target: "node",
+  target: 'node',
   entry: {
-    app: path.resolve(__dirname, "../client/server-entry.jsx")
+    app: path.resolve(__dirname, '../client/server-entry.jsx')
   },
   output: {
-    filename: "server-entry.js",
-    path: path.resolve(__dirname, "../dist/"),
-    publicPath: "/public/",
-    libraryTarget: "commonjs2"
+    filename: 'server-entry.js',
+    path: path.resolve(__dirname, '../dist/'),
+    publicPath: '/public/',
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: []
@@ -24,11 +23,11 @@ const config = merge(common, {
 });
 
 if (isDev) {
-  /***** 开发(development) *****/
-  config.mode = "development";
+  /***** 开发(development) *****/ // eslint-disable-line
+  config.mode = 'development';
 } else {
-  /***** 生产(production) *****/
-  config.mode = "production";
+  /***** 生产(production) *****/ // eslint-disable-line
+  config.mode = 'production';
 }
 
 module.exports = config;

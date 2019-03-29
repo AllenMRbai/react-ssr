@@ -1,9 +1,9 @@
-const express = require("express");
-const cookieParser = require("cookie-parser");
-const session = require("express-session");
-const fs = require("fs");
-const path = require("path");
-const ReactDOMServer = require("react-dom/server");
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const fs = require('fs');
+const path = require('path');
+const ReactDOMServer = require('react-dom/server');
 
 const server = express();
 
@@ -19,35 +19,35 @@ server.use(
 server.use(cookieParser());
 server.use(
   session({
-    secret: "Allen_server@side-render",
+    secret: 'Allen_server@side-render',
     resave: false,
     saveUninitialized: false,
     cookie: {
-      path: "/",
+      path: '/',
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000
     }
   })
 );
 
-if (ENV === "production") {
-  const serverEntry = require("../dist/server-entry").default;
+if (ENV === 'production') {
+  const serverEntry = require('../dist/server-entry').default;
 
-  server.use("/public", express.static(path.resolve(__dirname, "../dist")));
+  server.use('/public', express.static(path.resolve(__dirname, '../dist')));
 
-  let templatePath = path.resolve(__dirname, "../dist/index.html");
-  let template = fs.readFileSync(templatePath, "utf-8");
+  let templatePath = path.resolve(__dirname, '../dist/index.html');
+  let template = fs.readFileSync(templatePath, 'utf-8');
 
-  server.get("*", (req, res) => {
+  server.get('*', (req, res) => {
     const appString = ReactDOMServer.renderToString(serverEntry);
-    res.send(template.replace("<!-- app -->", appString));
+    res.send(template.replace('<!-- app -->', appString));
   });
-} else if (ENV === "development") {
-  const devStatic = require("./util/dev-static");
+} else if (ENV === 'development') {
+  const devStatic = require('./util/dev-static');
 
   devStatic(server);
 }
 
 server.listen(PORT, () => {
-  console.log("server is running at port " + PORT);
+  console.log('server is running at port ' + PORT);
 });
