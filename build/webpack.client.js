@@ -14,7 +14,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const config = merge(common, {
   target: 'web',
   entry: {
-    app: path.resolve(__dirname, '../client/main.jsx')
+    app: path.resolve(__dirname, '../client/client-entry.jsx')
   },
   module: {
     rules: []

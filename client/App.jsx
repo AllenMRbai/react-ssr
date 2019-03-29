@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { hot } from 'react-hot-loader/root';
+import { Link } from 'react-router-dom';
+
+import Base from './layout/Base';
 
 @hot
 class App extends Component {
@@ -9,13 +12,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>123111454</h1>
-        <input type="text" />
-        <button type="button" onClick={this.sayHello}>
-          点击说你好
-        </button>
-      </div>
+      <Fragment>
+        <div>
+          <Link to="/">首页</Link>
+          <br />
+          <Link to="/detail">detail</Link>
+        </div>
+        <Base />
+      </Fragment>
     );
   }
 }
