@@ -64,7 +64,8 @@ if (isDev) {
 
   Array.prototype.push.apply(config.plugins, [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../client/template.html')
+      template: path.resolve(__dirname, '../client/template.html'),
+      favicon: path.resolve(__dirname, '../client/favicon.png')
     })
   ]);
 } else {
@@ -131,6 +132,7 @@ if (isDev) {
       new TerserWebpackPlugin({ sourceMap: true }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../client/template.html'),
+        favicon: path.resolve(__dirname, '../client/favicon.png'),
         minify: {
           collapseWhitespace: true
         }
