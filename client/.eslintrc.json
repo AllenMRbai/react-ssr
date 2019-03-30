@@ -10,5 +10,7 @@
     "sourceType": "module"
   },
   "extends": ["airbnb", "prettier"],
-  "rules": {}
+  "rules": {
+    "react/require-default-props": [0]
+  }
 }
