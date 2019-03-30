@@ -1,15 +1,15 @@
-const axios = require('axios');
-const webpack = require('webpack');
-const path = require('path');
-const MemoryFileSystem = require('memory-fs');
-const serverConfig = require('../../build/webpack.server');
-const ReactDOMServer = require('react-dom/server');
-const proxy = require('http-proxy-middleware');
+const axios = require("axios");
+const webpack = require("webpack");
+const path = require("path");
+const MemoryFileSystem = require("memory-fs");
+const serverConfig = require("../../build/webpack.server");
+const ReactDOMServer = require("react-dom/server");
+const proxy = require("http-proxy-middleware");
 
-const STATIC_HOST = 'http://localhost:3000';
+const STATIC_HOST = "http://localhost:3000";
 
 function getTemplate() {
-  return axios.get(STATIC_HOST + '/public/index.html');
+  return axios.get(STATIC_HOST + "/public/index.html");
 }
 
 const compiler = webpack(serverConfig);
@@ -43,25 +43,25 @@ compiler.watch({}, (err, stats) => {
     serverConfig.output.filename
   );
   let m = new Module();
-  let bundle = mfs.readFileSync(bundlePath, 'utf-8');
-  m._compile(bundle, 'server-entry.js');
+  let bundle = mfs.readFileSync(bundlePath, "utf-8");
+  m._compile(bundle, "server-entry.js");
   serverBundle = m.exports.default;
 });
 
 module.exports = function(server) {
   server.use(
-    '/public',
+    "/public",
     proxy({
       target: STATIC_HOST
     })
   );
 
-  server.use('*', (req, res) => {
+  server.use("*", (req, res) => {
     getTemplate()
       .then(response => {
         let template = response.data;
         let renderResult = ReactDOMServer.renderToString(serverBundle);
-        res.send(template.replace('<!-- app -->', renderResult));
+        res.send(template.replace("<!-- app -->", renderResult));
       })
       .catch(err => {
         console.error(err);

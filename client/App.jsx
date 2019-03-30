@@ -18,6 +18,7 @@ class App extends Component {
           <br />
           <Link to="/detail">detail</Link>
         </div>
+
         <Base />
       </Fragment>
     );

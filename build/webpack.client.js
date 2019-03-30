@@ -1,20 +1,20 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 
-const merge = require('webpack-merge');
-const common = require('./webpack.common');
+const merge = require("webpack-merge");
+const common = require("./webpack.common");
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 
 const config = merge(common, {
-  target: 'web',
+  target: "web",
   entry: {
-    app: path.resolve(__dirname, '../client/client-entry.jsx')
+    app: path.resolve(__dirname, "../client/client-entry.jsx")
   },
   module: {
     rules: []
@@ -24,78 +24,78 @@ const config = merge(common, {
 
 if (isDev) {
   /***** 开发(development) *****/ // eslint-disable-line
-  config.mode = 'development';
+  config.mode = "development";
 
-  config.devtool = 'inline-source-map';
+  config.devtool = "inline-source-map";
 
   config.output = {
-    filename: '[name].js',
-    path: path.resolve(__dirname, '../dist/'),
-    publicPath: '/public/'
+    filename: "[name].js",
+    path: path.resolve(__dirname, "../dist/"),
+    publicPath: "/public/"
   };
 
   config.devServer = {
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     port: 3000,
-    publicPath: '/public/',
+    publicPath: "/public/",
     overlay: {
       errors: true
     },
     hot: true,
     historyApiFallback: {
-      index: '/public/index.html'
+      index: "/public/index.html"
     }
   };
 
   Array.prototype.push.apply(config.module.rules, [
     {
       test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader']
+      use: ["style-loader", "css-loader", "sass-loader"]
     },
     {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+      use: ["style-loader", "css-loader"]
     },
     {
       test: /\.(png|jpeg|jpg|gif|svg)/,
-      use: 'file-loader'
+      use: "file-loader"
     }
   ]);
 
   Array.prototype.push.apply(config.plugins, [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../client/template.html'),
-      favicon: path.resolve(__dirname, '../client/favicon.png')
+      template: path.resolve(__dirname, "../client/template.html"),
+      favicon: path.resolve(__dirname, "../client/favicon.png")
     })
   ]);
 } else {
   /***** 生产(production) *****/ // eslint-disable-line
-  config.mode = 'production';
+  config.mode = "production";
 
-  config.devtool = 'source-map';
+  config.devtool = "source-map";
 
   config.output = {
-    filename: '[name].[contentHash].js',
-    path: path.resolve(__dirname, '../dist/'),
-    publicPath: '/public/'
+    filename: "[name].[contentHash].js",
+    path: path.resolve(__dirname, "../dist/"),
+    publicPath: "/public/"
   };
 
   Array.prototype.push.apply(config.module.rules, [
     {
       test: /\.scss$/,
-      use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
     },
     {
       test: /\.css$/,
-      use: [MiniCssExtractPlugin.loader, 'css-loader']
+      use: [MiniCssExtractPlugin.loader, "css-loader"]
     },
     {
       test: /\.(png|jpeg|jpg|gif|svg)/,
       use: {
-        loader: 'url-loader',
+        loader: "url-loader",
         options: {
           limit: 1024,
-          filename: 'img/[name].[contentHash].[ext]'
+          filename: "img/[name].[contentHash].[ext]"
         }
       }
     }
@@ -103,16 +103,16 @@ if (isDev) {
 
   Array.prototype.push.apply(config.plugins, [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contentHash].css'
+      filename: "css/[name].[contentHash].css"
     }),
     new CleanWebpackPlugin(),
     new webpack.HashedModuleIdsPlugin()
   ]);
 
   config.optimization = {
-    runtimeChunk: 'single',
+    runtimeChunk: "single",
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
       maxInitialRequests: Infinity,
       minSize: 80 * 1024,
       minChunks: 1,
@@ -123,7 +123,7 @@ if (isDev) {
             const packageName = module.context.match(
               /[\\/]node_modules[\\/](.*?)([\\/]|$)/
             )[1];
-            return `vendor_${packageName.replace('@', '')}`;
+            return `vendor_${packageName.replace("@", "")}`;
           }
         }
       }
@@ -131,8 +131,8 @@ if (isDev) {
     minimizer: [
       new TerserWebpackPlugin({ sourceMap: true }),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../client/template.html'),
-        favicon: path.resolve(__dirname, '../client/favicon.png'),
+        template: path.resolve(__dirname, "../client/template.html"),
+        favicon: path.resolve(__dirname, "../client/favicon.png"),
         minify: {
           collapseWhitespace: true
         }

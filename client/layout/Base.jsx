@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { Fragment } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-import TopicList from '../views/TopicList';
-import TopicDetail from '../views/TopicDetail';
+import TopicList from "../views/TopicList";
+import TopicDetail from "../views/TopicDetail";
 
 export default function Base() {
   return (
