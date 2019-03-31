@@ -41,6 +41,9 @@ if (isDev) {
     overlay: {
       errors: true
     },
+    proxy: {
+      "/api": "http://localhost:8080"
+    },
     hot: true,
     historyApiFallback: {
       index: "/public/index.html"
