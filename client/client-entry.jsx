@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'mobx-react';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "mobx-react";
 
-import App from './App';
-import appState from './store/app.store';
+import App from "./App";
+import appState from "./store/app.store";
 
 function render(Component) {
   ReactDOM.hydrate(
-    <BrowserRouter>
-      <Provider appState={appState}>
+    <Provider appState={appState}>
+      <BrowserRouter>
         <Component />
-      </Provider>
-    </BrowserRouter>,
-    document.getElementById('root'),
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById("root")
   );
 }
 
