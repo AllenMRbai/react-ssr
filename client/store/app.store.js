@@ -1,4 +1,4 @@
-import { observable, computed, action, autorun } from "mobx";
+import { observable, computed, action } from "mobx";
 
 export class AppState {
   @observable name = "Allen";
@@ -19,13 +19,5 @@ export class AppState {
 }
 
 const appState = new AppState();
-
-autorun(() => {
-  console.log(appState.msg);
-});
-
-setInterval(() => {
-  appState.add();
-}, 1000);
 
 export default appState;
