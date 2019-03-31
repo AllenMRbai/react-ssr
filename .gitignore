@@ -5,3 +5,6 @@ logs
 *.log
 
 .vscode
+
+client/config/accessToken.js
+server/config/db.js
