@@ -4,6 +4,8 @@ const session = require("express-session");
 const fs = require("fs");
 const path = require("path");
 const ReactDOMServer = require("react-dom/server");
+const RedisStore = require("connect-redis")(session);
+const redisClient = require("./util/redisClient");
 
 const server = express();
 
@@ -20,8 +22,12 @@ server.use(cookieParser());
 server.use(
   session({
     secret: "Allen_server@side-render",
+    name: "tid",
     resave: false,
     saveUninitialized: false,
+    store: new RedisStore({
+      client: redisClient
+    }),
     cookie: {
       path: "/",
       httpOnly: true,
@@ -29,6 +35,9 @@ server.use(
     }
   })
 );
+
+server.use("/api/user", require("./util/handle-login"));
+server.use("/api", require("./util/proxy"));
 
 if (ENV === "production") {
   const serverEntry = require("../dist/server-entry").default;
