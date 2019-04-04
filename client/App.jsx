@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { hot } from "react-hot-loader/root";
 
-import Base from "./layout/Base";
+import Routes from "./routes/Routes.jsx";
 
 class App extends Component {
   sayHello = () => {
@@ -18,10 +19,12 @@ class App extends Component {
           <br />
           <Link to="/testApi">api测试</Link>
         </div>
-        <Base />
+        <Routes />
       </Fragment>
     );
   }
 }
 
 export default App;
+
+export const HotApp = hot(App);
