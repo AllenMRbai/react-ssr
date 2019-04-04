@@ -26,7 +26,7 @@ if (isDev) {
   /***** 开发(development) *****/ // eslint-disable-line
   config.mode = "development";
 
-  config.devtool = "inline-source-map";
+  config.devtool = "cheap-eval-source-map";
 
   config.output = {
     filename: "[name].js",

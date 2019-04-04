@@ -25,6 +25,8 @@ const config = merge(common, {
 if (isDev) {
   /***** 开发(development) *****/ // eslint-disable-line
   config.mode = "development";
+
+  config.devtool = "cheap-eval-source-map";
 } else {
   /***** 生产(production) *****/ // eslint-disable-line
   config.mode = "production";
