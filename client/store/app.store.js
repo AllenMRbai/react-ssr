@@ -1,6 +1,6 @@
 import { observable, computed, action } from "mobx";
 
-export class AppState {
+export default class AppState {
   @observable name = "Allen";
 
   @observable count = 0;
@@ -17,7 +17,3 @@ export class AppState {
     this.name = name;
   }
 }
-
-const appState = new AppState();
-
-export default appState;

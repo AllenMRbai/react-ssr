@@ -5,6 +5,7 @@ const MemoryFileSystem = require("memory-fs");
 const serverConfig = require("../../build/webpack.server");
 const ReactDOMServer = require("react-dom/server");
 const proxy = require("http-proxy-middleware");
+const bootstrapper = require("react-async-bootstrapper");
 
 const STATIC_HOST = "http://localhost:3000";
 
@@ -16,6 +17,7 @@ const compiler = webpack(serverConfig);
 const mfs = new MemoryFileSystem();
 const Module = module.constructor;
 let serverBundle = null;
+let createStoreMap = null;
 
 compiler.outputFileSystem = mfs;
 
@@ -46,6 +48,7 @@ compiler.watch({}, (err, stats) => {
   let bundle = mfs.readFileSync(bundlePath, "utf-8");
   m._compile(bundle, "server-entry.js");
   serverBundle = m.exports.default;
+  createStoreMap = m.exports.createStoreMap;
 });
 
 module.exports = function(server) {
@@ -60,8 +63,30 @@ module.exports = function(server) {
     getTemplate()
       .then(response => {
         let template = response.data;
-        let renderResult = ReactDOMServer.renderToString(serverBundle);
-        res.send(template.replace("<!-- app -->", renderResult));
+        let url = req.originalUrl;
+        let context = {};
+        let stores = createStoreMap ? createStoreMap() : {};
+        let renderResult = "";
+
+        if (serverBundle) {
+          let app = serverBundle(url, context, stores);
+
+          bootstrapper(app).then(() => {
+            renderResult = ReactDOMServer.renderToString(app);
+
+            console.log("打印count");
+            console.log(JSON.stringify(stores.appState.count));
+
+            if (context.url) {
+              res.status(302).setHeader("Location", context.url);
+              res.end();
+            } else {
+              res.send(template.replace("<!-- app -->", renderResult));
+            }
+          });
+        } else {
+          res.send(template);
+        }
       })
       .catch(err => {
         console.error(err);

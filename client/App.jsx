@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { hot } from "react-hot-loader/root";
 import { Link } from "react-router-dom";
 
 import Base from "./layout/Base";
 
-@hot
 class App extends Component {
   sayHello = () => {
     console.log("hello world");
@@ -20,7 +18,6 @@ class App extends Component {
           <br />
           <Link to="/testApi">api测试</Link>
         </div>
-
         <Base />
       </Fragment>
     );
