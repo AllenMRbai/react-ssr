@@ -19,10 +19,10 @@ export default class TestApi extends Component {
         accessToken
       })
       .then(res => {
-        console.log(res); // eslint-disable-line
+        console.log(res);
       })
       .catch(err => {
-        console.log(err); // eslint-disable-line
+        console.log(err);
       });
   };
 
@@ -30,10 +30,10 @@ export default class TestApi extends Component {
     axios
       .get("/api/message/count")
       .then(res => {
-        console.log(res); // eslint-disable-line
+        console.log(res);
       })
       .catch(err => {
-        console.log(err); // eslint-disable-line
+        console.log(err);
       });
   };
 
@@ -41,10 +41,10 @@ export default class TestApi extends Component {
     axios
       .post("/api/message/mark_all")
       .then(res => {
-        console.log(res); // eslint-disable-line
+        console.log(res);
       })
       .catch(err => {
-        console.log(err); // eslint-disable-line
+        console.log(err);
       });
   };
 
