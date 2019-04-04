@@ -38,6 +38,10 @@ server.use(
 
 server.use("/api/user", require("./util/handle-login"));
 server.use("/api", require("./util/proxy"));
+server.get("/service-worker.js", (req, res) => {
+  res.setHeader("Content-Type", "application/javascript; charset=UTF-8");
+  res.send("");
+});
 
 if (ENV === "production") {
   const serverEntry = require("../dist/server-entry").default;
