@@ -14,6 +14,7 @@ module.exports = {
   extends: ["airbnb", "prettier"],
   rules: {
     "react/require-default-props": [0],
+    "react/prop-types": [0],
     "no-console": [isDev ? 0 : 1]
   }
 };
