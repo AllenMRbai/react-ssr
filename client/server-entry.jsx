@@ -4,6 +4,7 @@ import { Provider, useStaticRendering } from "mobx-react";
 
 import App from "./App";
 import { createStoreMap } from "./store";
+import routes from "./routes/routes";
 
 useStaticRendering(true);
 
@@ -17,4 +18,4 @@ export default function(url, context, stores) {
   );
 }
 
-export { createStoreMap };
+export { createStoreMap, routes };

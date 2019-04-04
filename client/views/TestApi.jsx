@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import axios from "axios";
+import axios from "../lib/axios";
 import accessToken from "../config/accessToken";
 
 export default class TestApi extends Component {
   getTopics = () => {
-    axios.get("/api/topics", {
+    return axios.get("/api/topics", {
       params: {
         page: 1,
         tab: "ask",
@@ -14,12 +14,13 @@ export default class TestApi extends Component {
   };
 
   login = () => {
-    axios
+    return axios
       .post("/api/user/login", {
         accessToken
       })
       .then(res => {
         console.log(res);
+        return res;
       })
       .catch(err => {
         console.log(err);
@@ -27,7 +28,7 @@ export default class TestApi extends Component {
   };
 
   getMessageCount = () => {
-    axios
+    return axios
       .get("/api/message/count")
       .then(res => {
         console.log(res);
@@ -38,7 +39,7 @@ export default class TestApi extends Component {
   };
 
   markAll = () => {
-    axios
+    return axios
       .post("/api/message/mark_all")
       .then(res => {
         console.log(res);
@@ -46,6 +47,24 @@ export default class TestApi extends Component {
       .catch(err => {
         console.log(err);
       });
+  };
+
+  markError = () => {
+    return axios
+      .post("/api/message/mark_allsdfdsf")
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+
+  promiseAll = () => {
+    return Promise.all([this.login(), this.getTopics()]).then(resArr => {
+      console.log("这是promise all");
+      console.log(resArr);
+    });
   };
 
   render() {
@@ -62,6 +81,12 @@ export default class TestApi extends Component {
         </button>
         <button onClick={this.markAll} type="button">
           message/mark_all
+        </button>
+        <button onClick={this.markError} type="button">
+          this will make a reques error
+        </button>
+        <button onClick={this.promiseAll} type="button">
+          promise all
         </button>
       </div>
     );
