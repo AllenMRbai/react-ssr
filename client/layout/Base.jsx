@@ -9,7 +9,7 @@ export default function Base() {
   return (
     <Fragment>
       <Switch>
-        <Route path="/" exact component={() => <Redirect to="/list" />} />
+        <Redirect from="/" exact to="/list" />
         <Route path="/list" component={TopicList} />
         <Route path="/detail" component={TopicDetail} />
         <Route path="/testApi" component={TestApi} />
