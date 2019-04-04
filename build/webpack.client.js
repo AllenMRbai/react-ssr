@@ -67,7 +67,15 @@ if (isDev) {
 
   Array.prototype.push.apply(config.plugins, [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "../client/template.html"),
+      filename: "index.html",
+      template: path.resolve(__dirname, "../client/client.template.html"),
+      favicon: path.resolve(__dirname, "../client/favicon.png")
+    }),
+    new HtmlWebpackPlugin({
+      filename: "server.ejs",
+      template:
+        "!!ejs-compiled-loader!" +
+        path.resolve(__dirname, "../client/server.template.ejs"),
       favicon: path.resolve(__dirname, "../client/favicon.png")
     })
   ]);
@@ -109,7 +117,19 @@ if (isDev) {
       filename: "css/[name].[contentHash].css"
     }),
     new CleanWebpackPlugin(),
-    new webpack.HashedModuleIdsPlugin()
+    new webpack.HashedModuleIdsPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.resolve(__dirname, "../client/client.template.html"),
+      favicon: path.resolve(__dirname, "../client/favicon.png")
+    }),
+    new HtmlWebpackPlugin({
+      filename: "server.ejs",
+      template:
+        "!!ejs-compiled-loader!" +
+        path.resolve(__dirname, "../client/server.template.ejs"),
+      favicon: path.resolve(__dirname, "../client/favicon.png")
+    })
   ]);
 
   config.optimization = {
@@ -133,13 +153,6 @@ if (isDev) {
     },
     minimizer: [
       new TerserWebpackPlugin({ sourceMap: true }),
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "../client/template.html"),
-        favicon: path.resolve(__dirname, "../client/favicon.png"),
-        minify: {
-          collapseWhitespace: true
-        }
-      }),
       new OptimizeCssAssetsWebpackPlugin()
     ]
   };
