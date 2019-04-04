@@ -311,6 +311,13 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
+"@babel/plugin-syntax-dynamic-import@^7.2.0":
+  version "7.2.0"
+  resolved "http://registry.npm.taobao.org/@babel/plugin-syntax-dynamic-import/download/@babel/plugin-syntax-dynamic-import-7.2.0.tgz#69c159ffaf4998122161ad8ebc5e6d1f55df8612"
+  integrity sha1-acFZ/69JmBIhYa2OvF5tH1XfhhI=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+
 "@babel/plugin-syntax-json-strings@^7.2.0":
   version "7.2.0"
   resolved "http://registry.npm.taobao.org/@babel/plugin-syntax-json-strings/download/@babel/plugin-syntax-json-strings-7.2.0.tgz#72bd13f6ffe1d25938129d2a186b11fd62951470"
@@ -2551,6 +2558,18 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
+
+ejs-compiled-loader@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/ejs-compiled-loader/download/ejs-compiled-loader-1.1.0.tgz#6a294debd1810ba7ebf77273fe1b1a8df0572761"
+  integrity sha1-ailN69GBC6fr93Jz/hsajfBXJ2E=
+  dependencies:
+    ejs "git+https://github.com/nemanjan00/ejs.git"
+    uglify-js "~1.3.4"
+
+"ejs@git+https://github.com/nemanjan00/ejs.git":
+  version "1.0.0"
+  resolved "git+https://github.com/nemanjan00/ejs.git#ba8ef7f575e190fc60017bc82911151378fe3258"
 
 electron-to-chromium@^1.3.116:
   version "1.3.120"
@@ -4924,6 +4943,11 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
+mobx-devtools-mst@^0.9.21:
+  version "0.9.21"
+  resolved "http://registry.npm.taobao.org/mobx-devtools-mst/download/mobx-devtools-mst-0.9.21.tgz#430c52131d82b7ef24281baaae64e552908afa91"
+  integrity sha1-QwxSEx2Ct+8kKBuqrmTlUpCK+pE=
+
 mobx-react@^5.4.3:
   version "5.4.3"
   resolved "http://registry.npm.taobao.org/mobx-react/download/mobx-react-5.4.3.tgz#6709b7dd89670c40e9815914ac2ca49cc02bfb47"
@@ -4932,10 +4956,15 @@ mobx-react@^5.4.3:
     hoist-non-react-statics "^3.0.0"
     react-lifecycles-compat "^3.0.2"
 
-mobx@^5.9.0:
-  version "5.9.0"
-  resolved "http://registry.npm.taobao.org/mobx/download/mobx-5.9.0.tgz#a08edd7132787f771409c9c33788a5df66ff7ce7"
-  integrity sha1-oI7dcTJ4f3cUCcnDN4il32b/fOc=
+mobx-state-tree@^3.13.0:
+  version "3.13.0"
+  resolved "http://registry.npm.taobao.org/mobx-state-tree/download/mobx-state-tree-3.13.0.tgz#b09721d71bdcfc941f10d19647013de8ceb5d327"
+  integrity sha1-sJch1xvc/JQfENGWRwE96M610yc=
+
+mobx@4.9.4:
+  version "4.9.4"
+  resolved "http://registry.npm.taobao.org/mobx/download/mobx-4.9.4.tgz#bb37a0e4e05f0b02be89ced9d23445cad73377ad"
+  integrity sha1-uzeg5OBfCwK+ic7Z0jRFytczd60=
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -6278,13 +6307,6 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-async-bootstrapper@^2.1.1:
-  version "2.1.1"
-  resolved "http://registry.npm.taobao.org/react-async-bootstrapper/download/react-async-bootstrapper-2.1.1.tgz#8bc4115108e2ce6ba5771850a6814980599e09f2"
-  integrity sha1-i8QRUQjizmuldxhQpoFJgFmeCfI=
-  dependencies:
-    react-tree-walker "^4.2.0"
-
 react-dom@^16.8.5:
   version "16.8.5"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.8.5.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Freact-dom%2Fdownload%2Freact-dom-16.8.5.tgz#b3e37d152b49e07faaa8de41fdf562be3463335e"
@@ -6348,11 +6370,6 @@ react-router@5.0.0:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
-
-react-tree-walker@^4.2.0:
-  version "4.3.0"
-  resolved "http://registry.npm.taobao.org/react-tree-walker/download/react-tree-walker-4.3.0.tgz#b7cae498cebb490281e9e99a01bdb9c6b4926cd3"
-  integrity sha1-t8rkmM67SQKB6emaAb25xrSSbNM=
 
 react@^16.8.5:
   version "16.8.5"
@@ -6853,7 +6870,7 @@ send@0.16.2:
     range-parser "~1.2.0"
     statuses "~1.4.0"
 
-serialize-javascript@^1.4.0:
+serialize-javascript@^1.4.0, serialize-javascript@^1.6.1:
   version "1.6.1"
   resolved "http://registry.npm.taobao.org/serialize-javascript/download/serialize-javascript-1.6.1.tgz#4d1f697ec49429a847ca6f442a2a755126c4d879"
   integrity sha1-TR9pfsSUKahHym9EKip1USbE2Hk=
@@ -7618,6 +7635,11 @@ uglify-js@3.4.x:
   dependencies:
     commander "~2.19.0"
     source-map "~0.6.1"
+
+uglify-js@~1.3.4:
+  version "1.3.5"
+  resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-1.3.5.tgz#4b5bfff9186effbaa888e4c9e94bd9fc4c94929d"
+  integrity sha1-S1v/+Rhu/7qoiOTJ6UvZ/EyUkp0=
 
 uid-safe@~2.1.5:
   version "2.1.5"
