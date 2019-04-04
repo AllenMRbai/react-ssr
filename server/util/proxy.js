@@ -11,17 +11,25 @@ module.exports = function(req, res, next) {
     return res.status(401).json({ success: false, msg: "need login" });
   }
 
-  console.log("代理请求信息");
+  let params = { ...req.query };
+  let data = { ...req.body };
+
+  console.log("代理请求信息*********************************************");
   console.log(req.method);
   console.log(`${baseUrl}${path}`);
-  console.log(req.query);
+  console.log(params);
   console.log({ ...req.body, accesstoken: user.accessToken });
+
+  if (needAccessToken) {
+    params.accesstoken = req.session.user.accessToken;
+    data.accesstoken = req.session.user.accessToken;
+  }
 
   axios({
     method: req.method,
     url: `${baseUrl}${path}`,
-    params: { ...req.query, accesstoken: req.session.user.accessToken },
-    data: { ...req.body, accesstoken: req.session.user.accessToken }
+    params,
+    data
     // headers: {
     //   "Content-Type": "application/x-www-form-urlencoded"
     // }

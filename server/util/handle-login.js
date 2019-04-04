@@ -4,9 +4,10 @@ const router = require("express").Router();
 const baseUrl = "https://cnodejs.org/api/v1";
 
 router.post("/login", function(req, res, next) {
-  console.log("登陆信息");
+  console.log("登陆信息*************************************************");
   console.log(`${baseUrl}/accesstoken`);
   console.log(req.body.accessToken);
+
   axios
     .post(`${baseUrl}/accesstoken`, {
       accesstoken: req.body.accessToken
