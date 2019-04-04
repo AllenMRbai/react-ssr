@@ -9,7 +9,7 @@
     "start:client": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.client.js",
     "start:server": "cross-env NODE_ENV=development nodemon ./server/index.js",
     "build": "npm run build:client && npm run build:server",
-    "lint": "eslint --ext .jsx --ext .js .",
+    "lint": "cross-env NODE_ENV=production eslint --ext .jsx --ext .js .",
     "precommit": "npm run lint"
   },
   "keywords": [],
@@ -64,6 +64,7 @@
     "mobx-react": "^5.4.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
+    "react-async-bootstrapper": "^2.1.1",
     "react-dom": "^16.8.5",
     "react-hot-loader": "^4.8.0",
     "react-router-dom": "^5.0.0",

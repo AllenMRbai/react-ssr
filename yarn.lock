@@ -6278,6 +6278,13 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-async-bootstrapper@^2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/react-async-bootstrapper/download/react-async-bootstrapper-2.1.1.tgz#8bc4115108e2ce6ba5771850a6814980599e09f2"
+  integrity sha1-i8QRUQjizmuldxhQpoFJgFmeCfI=
+  dependencies:
+    react-tree-walker "^4.2.0"
+
 react-dom@^16.8.5:
   version "16.8.5"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.8.5.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Freact-dom%2Fdownload%2Freact-dom-16.8.5.tgz#b3e37d152b49e07faaa8de41fdf562be3463335e"
@@ -6341,6 +6348,11 @@ react-router@5.0.0:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
+
+react-tree-walker@^4.2.0:
+  version "4.3.0"
+  resolved "http://registry.npm.taobao.org/react-tree-walker/download/react-tree-walker-4.3.0.tgz#b7cae498cebb490281e9e99a01bdb9c6b4926cd3"
+  integrity sha1-t8rkmM67SQKB6emaAb25xrSSbNM=
 
 react@^16.8.5:
   version "16.8.5"
